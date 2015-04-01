@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>Pie Chart Count Down (jQuery)</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link href="http://www.jqueryscript.net/css/top.css" rel="stylesheet" type="text/css">
+</head>
+<body><div id="menu">
+<div class="w">
+<a href="http://www.jqueryscript.net/time-clock/Pie-Chart-CountDown-Plugin-for-jQuery.html">Download</a> - <a href="http://www.jqueryscript.net/">Back To jQueryScript.Net</a></div>
+</div>
+
+    <h1 style="margin-top:100px;">Pie Chart Count Down    </h1>
+<div class="examples" id="basic-example">
+<h2>Basic examples</h2>
+        <div class="spinner-wrapper">
+            <h3>Count down 1</h3>
+            <div id="spinner1"></div>
+        </div>
+        <div class="spinner-wrapper">
+            <h3>Count down 2</h3>
+            <div id="spinner2"></div>
+        </div>
+        <div class="button-wrapper">
+            <input type="button" onclick="spinnerExamples();" value="Count me down!" />
+        </div>
+    </div>
+
+    <div id="control-example">
+        <h2>Controllable infinite spinner</h2>
+        <div id="spinner3"></div>
+        <div class="button-wrapper">
+            <input type="button" id="spinner-button" value="Start infinte spinner" id="" />
+        </div>
+    </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="jquery.piechartcountdown.js"></script>
+
+    <script>
+
+        var $spinner1 = $('#spinner1'),
+            $spinner2 = $('#spinner2'),
+            $spinner3 = $('#spinner3');
+
+        function spinnerExamples() {
+            $('#basic-example .spinner-wrapper').show();
+            $spinner1
+                .pieChartCountDown(4, function($spinner) {
+                    $spinner.append('<em>Count down 1 finished</em>');
+                });
+
+            $spinner2
+                .pieChartCountDown(8, {color: 'purple', size : 120}, function($spinner) {
+                    $spinner.append('<em>Count down 2 finished</em>');
+                });
+        }
+
+       $('#spinner-button')
+               .bind('click', function() {
+                    if(this.value == 'Start infinte spinner') {
+                        this.value = 'Remove spinner';
+                        $spinner3.pieChartCountDown({
+                            time : 1,
+                            color:'#FFF',
+                            background: '#555',
+                            border:8,
+                            size: 40,
+                            infinite:true
+                        });
+                    }
+                    else {
+                        $spinner3.pieChartCountDown('destroy');
+                        this.value = 'Start infinte spinner';
+                    }
+               });
+
+    </script><script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>

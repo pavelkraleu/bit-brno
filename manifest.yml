@@ -1,0 +1,9 @@
+applications:
+- name: bitbrno
+  buildpack: python_buildpack
+  memory: 128M
+  instances: 1
+  path: .
+  command: python bitbrno.py
+  domain: eu-gb.mybluemix.net
+  host: bitbrno

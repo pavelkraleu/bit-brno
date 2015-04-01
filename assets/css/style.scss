@@ -1,0 +1,149 @@
+/* 
+B⃦itBrno CSS LOL
+http://www.bitbrno.cz
+*/
+
+@import 'normalize.css';
+@import '../icons/bitbrno/style.css';
+ 
+
+$white:             #fff;
+$black:             #000;
+$blue:              #288BCA;
+$blue-dark:         #206FA1;
+$green:             #5BB126;
+$orange:            #EA9639;
+$red:               #E74C3C;
+
+$grey-green:        #EEF2EC;
+$grey-line-1:       #E0E4E9;
+$grey-line-2:       #C8C7CC;
+$grey-line-trans:   rgba(0,0,0,0.15);
+$grey-font:         rgba(0,0,0,0.4);
+
+$film:              rgba(0,0,0,0.4);
+
+$grad-blue-light:   #23A3E3;
+$grad-blue-dark:    #1F8FC7;
+
+$radius-sm:         2px;
+$radius-md:         3px;
+
+$duration:          0.4s ease-in-out;
+
+
+/* basics */
+
+html * {box-sizing: border-box;}
+body {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; background: $grey-green;}
+
+.button {font-weight: 700; padding: 3px 10px; text-decoration: none; border: 1px solid #1E8FC6;}
+.button.primary {background: linear-gradient(-180deg, $grad-blue-light 0%, $grad-blue-dark 100%); border-color: $blue; color: $white;}
+.button.secondary {border-color: $blue; color: $blue;}
+.button.tertiary {border-color: $grey-line-2; color: $blue;}
+.button.tertiary.warning {color: $orange;}
+.button.tertiary.crucial {color: $red;}
+
+.button.full {height: 55px; display: block; position: relative; width: 100%; font-size: 18px; text-align: center; padding-top: 15px;}
+
+
+/* typo */
+
+h1, h2.loud {font-size: 21px; line-height: 25px; font-weight: 400; margin: 11px 0;}
+h2.loud {margin: 22px 0 0; color: $black;}
+h2.loud.crucial {margin: 22px 0; color: $red;}
+h2 {font-size: 14px; font-weight: 700; color: $grey-font; margin: 22px 0 13px;}
+h2.label {font-size: 14px; font-weight: 400; color: $grey-font; text-transform: uppercase; margin: 24px 0 13px;}
+p {margin: 11px 0;}
+
+a, a:visited {color: $blue;}
+a:hover, a:focus {color: $blue;}
+
+h1 .icon {color: $green; position: relative; top: 1px;}
+h2 .icon {position: relative; top: 1px;}
+
+
+/* boards */
+
+.container {width: 100%; overflow-x: hidden; position: relative;}
+.board {position: absolute; left: 0; top: 0; bottom: 0; width: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch; background: $grey-green; box-shadow: 0 0 40px rgba(0,0,0,0.5)}
+.board.active {z-index: 2;}
+.board .footer {position: absolute; bottom: 0; left: 0; right: 0;}
+
+.board.frw.go-out {transition: left $duration; left: -50%;}
+.board.frw.go-prep {left: 100%; z-index: 3;}
+.board.frw.go-in {transition: left $duration; left: 0;}
+
+.board.bck.go-out {transition: left $duration; left: 50%;}
+.board.bck.go-prep {left: -100%; z-index: 3;}
+.board.bck.go-in {transition: left $duration; left: 0;}
+
+
+/* cells */
+
+.cell {padding: 0 15px;}
+
+header.cell {background: $green; position: relative; height: 41px; margin-bottom: 3px; padding: 9px 15px 0; z-index: 2;}
+header:after {content: ''; display: block; position: absolute; bottom: -3px; left: 0; width: 100%; height: 3px; background: url(../elements/ticket-border-green.svg) repeat-x;}
+header .identity {width: 85px; height: 24px; background: url(../bitbrno.svg) no-repeat 0 0; text-indent: -1000000; display: block;}
+
+.alaticket {padding-bottom: 4px; background: $white; padding-top: 1px; margin-top: -3px; position: relative;}
+.alaticket:after {content: ''; display: block; position: absolute; bottom: -4px; left: 0; width: 100%; height: 4px; background: url(../elements/ticket-border-grey.svg) 0 0 repeat-x;}
+.alaticket h1 {color: $green; margin: 14px 0 5px;}
+.alaticket h1.calm {color: $grey-font;}
+.alaticket p {margin: 5px 0 7px;}
+
+.ticket {border: 1px solid $grey-line-2; border-width: 1px 0; margin-top: -1px; background: $white; white-space: nowrap; position: relative;}
+.ticket:after {content: ''; display: block; clear: both;}
+.ticket .labels {float: left; margin: 11px 0 11px;}
+.ticket .ticket-name {font-size: 18px; font-weight: 700; margin-bottom: 3px;}
+.ticket .ticket-meta .valid {color: $green;}
+.ticket .ticket-meta .waiting {color: $orange;}
+.ticket .actions {float: right; margin-top: 18px;}
+.ticket .actions .action {border-radius: $radius-md; display: inline-block;}
+.alaticket .ticket {border-bottom: 0; margin: 9px -15px -3px 0; border-color: $grey-line-1; padding-right: 15px;}
+
+.help ol, .help ul {margin: 0; padding: 0 0 11px 35px;}
+.help-contextual {color: $grey-font; margin-top: 18px;}
+.help-contextual p {color: $grey-font; margin: 0;}
+
+.collapsible, .collapsible * {-webkit-tap-highlight-color: rgba(0,0,0,0);}
+.collapsible h2 {color: $blue; font-weight: 400; margin: 0 0 7px;}
+.collapsible h2 .icon {font-size: 24px; position: relative; top: 6px;}
+.collapsible.first {margin-top: 22px;}
+.collapsible p.content {margin: 0; padding: 11px 0;}
+
+.separated {margin: 22px 0; color: $grey-font;}
+.separated>*:first-child {border-top: 1px solid $grey-line-trans; padding-top: 11px;}
+
+form.phone input {height: 55px; font-size: 18px; border: 1px solid $grey-line-2; border-width: 1px 0 0; width: 100%; padding: 0 15px; font-weight: 300; border-radius: 0; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
+
+button.button.full.paybit {padding-top: 1px;}
+.button.full.paybit:before {content: ''; display:block; position: absolute; width: 32px; height: 32px; left:15px; top:11px; background: url(../elements/bitcoin-inv.svg) no-repeat center;}
+.button.full.paybit .icon {font-size:24px; color: #fff; position: absolute; right: 7px; top: 15px; color: $grey-font;}
+
+.labels p {margin: 2px 0 11px; color: $grey-font;}
+
+.bigticket .help-contextual p {margin-bottom: 8px; text-align: center;}
+.bigticket .alaticket .ticket {border-bottom: 1px solid $grey-line-1; margin-bottom: 0;}
+
+.bigticket .subcell.labels {margin: 11px 0; text-align: center;}
+.bigticket .subcell.labels .label {color: $grey-font;}
+.bigticket .subcell.labels .number {font-weight: 700; margin-bottom: 14px;}
+.bigticket .subcell.labels .code {margin-bottom: 17px;}
+.bigticket .subcell.labels .code em {font-weight: 700; font-style: normal;}
+
+.dials .dial-labels {text-align: center;}
+.dials .dial-labels .label {margin-top: 40px;}
+.dials .dial-labels .time {font-size: 64px; color: $green; font-weight: 100; line-height: 64px; margin: 5px 0 11px;}
+.dials .dial-labels .from, .dials .dial-labels .to {font-size: 12px; line-height: 16px; color: $grey-font;}
+
+.dials {position: relative; width: 220px; margin: 0 auto;}
+.dials .dial {display: block; height: 220px; width: 220px; border-radius: 50%; box-shadow: inset 0px 0px 1px 0px rgba(0,0,0,0.5);}
+.dials .dial-labels {position: absolute; top: 10; left: 10; width: 200px; height: 200px; border-radius: 50%; background: $white;box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.3);}
+
+#ticket-waiting .dial {background: linear-gradient(-180deg, #FDB86C 0%, #EA9639 100%);}
+#ticket-confirmed .dial {background: linear-gradient(-180deg, #70D035 0%, #459215 100%);}
+
+#ticket-confirmed .dials .dial-labels .label {font-size: 18px; font-weight: 300; margin-top: 36px;}
+#ticket-waiting .dials .dial-labels .time {color: $orange;}

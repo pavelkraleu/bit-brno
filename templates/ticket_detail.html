@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block boards %}
+    <div class="board bigticket" id="{% if ticket.is_valid %}ticket-confirmed{% else %}ticket-waiting{% endif %}">  {# ticket-confirmed = > zelena #}
+        <div class="wrapper">
+
+{#            <header class="cell" data-bck="#home">#}
+            <header class="cell">
+                <a href="{{ url_for('index') }}" class="identity">BitBrno</a>
+            </header>
+
+            <div class="cell alaticket">
+                <h1 class="calm"><span class="icon icon-circle-check"></span>Zakoupená jízdenka</h1>
+                <div class="ticket">
+                    <div class="labels">
+                        <div class="ticket-name">Brno · Jízdenka {{ ticket.tariff }}&thinsp;Kč</div>
+                        <div class="ticket-meta">{{ ticket.duration }}&nbsp;minut · 2&nbsp;zóny · Mimo vlak</div>
+                    </div>
+                </div>
+                <div class="subcell labels">
+                    <div class="label">Zakoupená pro telefon</div>
+                    <div class="number">{{ ticket.phone }}</div>
+                </div>
+                <div class="subcell dials">
+                    <div class="dial" id="dial-waiting" data-dial-duration="120" data-dial-to="#ticket-confirmed"></div>
+                    <div class="dial-labels">
+                        <div class="label">
+                            {% if ticket.is_valid %}
+                                Potvrzená
+                            {% elif not ticket.is_confirmed %}
+                                Čeká na potvrzení
+                            {% else %}
+                                Platnost již skončila
+                            {% endif %}
+                        </div>
+                        <div class="time">18:55</div>
+                         <div class="from">Od: {% if ticket.valid_from %}{{ ticket.valid_from }}{% else %}&mdash;{% endif %}</div>
+                         <div class="to">Do: {% if ticket.valid_until %}{{ ticket.valid_until }}{% else %}&mdash;{% endif %}</div>
+                    </div>
+                </div>
+                <div class="subcell labels">
+                    <div class="label">Kód jízdenky</div>
+                    <div class="code">{% if ticket.code %}<em>{{ ticket.code }}</em>{% else %}&mdash;{% endif %}</div>
+                </div>
+            </div>
+
+            <div class="cell help-contextual">
+                <p class="subtle">Nepřišla vám jízdenka nebo potřebujete duplikát?</p>
+            </div>
+
+            <a class="button primary full disabled">Znovu zaslat potvrzující SMS</a>
+
+            <div class="cell help-contextual">
+                <p>V případě smazání SMS jízdenky v době její platnosti může cestující získat její duplikát.</p>
+                <p><span onclick="ticketStatus()">reload</span> {{ ticket.id }} <span id="ts"></span></p>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    {#<div class="board bigticket" id="ticket-confirmed">
+        <div class="wrapper">
+
+            <header class="cell" data-bck="#home">
+                <a href="index.html" class="identity">B⃦itBrno</a>
+            </header>
+
+            <div class="cell alaticket">
+                <h1 class="calm"><span class="icon icon-circle-check"></span> Zakoupená jízdenka</h1>
+                <div class="ticket">
+                    <div class="labels">
+                        <div class="ticket-name">Brno · Jízdenka 29&thinsp;Kč</div>
+                        <div class="ticket-meta">75&nbsp;minut · 2&nbsp;zóny · Mimo vlak</div>
+                    </div>
+                </div>
+                <div class="subcell labels">
+                    <div class="label">Zakoupená pro telefon</div>
+                    <div class="number">+420 473 829 012</div>
+                </div>
+                <div class="subcell dials">
+                    <div class="dial" id="dial-confirmed" data-dial-duration="1200"></div>
+                    <div class="dial-labels">
+                        <div class="label">Platná</div>
+                        <div class="time">18:55</div>
+                        <div class="from">Od: Dnes, 15:11</div>
+                        <div class="to">Do: Dnes, 15:41</div>
+                    </div>
+                </div>
+                <div class="subcell labels">
+                    <div class="label">Potvrzovací kód</div>
+                    <div class="code">MRhxyCjRt / <em>110822</em></div>
+                </div>
+            </div>
+
+            <div class="cell help-contextual">
+                <p class="subtle">Nepřišla vám jízdenka nebo potřebujete duplikát?</p>
+            </div>
+
+            <a class="button primary full">Znovu zaslat potvrzující SMS</a>
+
+            <div class="cell help-contextual">
+                <p>V případě smazání SMS jízdenky v době její platnosti může cestující získat její duplikát.</p>
+            </div>
+
+        </div>
+    </div>#}
+{% endblock %}
+
+{% block customjs %}
+    <script>
+
+        function ticketStatus() {
+            console.log('loaded');
+            $.getJSON('/bitbrnoapi/ticket-{{ ticket.id }}', function(data) {
+                document.current = data['valid'];
+                document.getElementById('ts').innerHTML = document.current;
+                if (document.prev && document.current != document.prev) {
+                    location.reload();
+                }
+                document.prev = document.current;
+            });
+        }
+
+    $(document).ready(function() {
+        setInterval(ticketStatus,2000);
+    });
+    </script>
+{% endblock %}

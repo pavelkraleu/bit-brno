@@ -1,0 +1,47 @@
+<html>
+<head>
+    <script>
+        function doWeHaveAnswerNotes() {
+            $.getJSON('/bitbrnoapi/getsmsstatus?smsid=14722964', function(data) {
+                document.getElementById('result').innerHTML = data['status']
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Stavy poslednich odeslanych SMS</h1>
+
+    {% if lastsmses %}
+    <table border>
+        <tr>
+            <td>ticketid</td>
+            <td>ticketphone</td>
+            <td>ticketstatus</td>
+            <td>sendstatus</td>
+            <td>ticketcreated</td>
+        </tr>
+        {% for sms in lastsmses %}
+            <tr>
+                <td>{{ sms.ticketid }}</td>
+                <td>{{ sms.ticketphone }}</td>
+                <td>{{ sms.ticketstatus }}</td>
+                <td>{{ sms.sendstatus }}</td>
+                <td>{{ sms.ticketcreated }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        No data.
+    {% endif %}
+
+
+    <div onclick="doWeHaveAnswerNotes()" >klikni</div><br>
+    <div id="result">vysl</div>
+
+
+            <script src="{{ url_for('static', filename='js/jquery-2.1.3.min.js') }}"></script>
+</body>
+
+
+</html>

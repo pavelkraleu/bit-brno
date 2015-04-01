@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block boards %}
+    <div class="board" id="tariff-{{ tariff.price }}">
+        <div class="wrapper">
+
+{#            <header class="cell" data-bck="#home">#}
+            <header class="cell">
+                <a href="{{ url_for('index') }}" class="identity">BitBrno</a>
+            </header>
+
+            <div class="cell alaticket">
+                <h1>Nákup jízdenky</h1>
+                <div class="ticket">
+                    <div class="labels">
+                        <div class="ticket-name">Brno · Jízdenka {{ tariff.price }}&thinsp;Kč</div>
+                        <div class="ticket-meta">{{ tariff.time }}&nbsp;minut · 2&nbsp;zóny · Mimo vlak</div>
+                    </div>
+                    <div class="actions">
+                        {% if tariff.mbtc %}
+                            <a href="#bitcoinbrana" class="action button secondary">{{ tariff.mbtc }} mBTC</a>
+                        {% else %}
+                            <span class="action button default">X mBTC</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="cell labels">
+                <h2 class="loud">Vložte své telefonní číslo</h2>
+                <p class="subtle">Platná jízdenka je spojená s telefonním číslem</p>
+            </div>
+
+            <form action="{{ url_for('ticket_buy', tariff_id=tariff.id) }}" method="post" class="phone">
+                <input type="tel" name="phone" {% if phone %}value="{{ phone }}"{% else %}placeholder="+420 XXX XXX XXX"{% endif %} required>
+                {% if tariff.enabled %}
+                    <button class="button primary full traversing paybit">K platbě · {{ tariff.mbtc }} mBTC</button>
+                {% else %}
+                    <span class="button tertiary crucial full traversing paybit">Prodej pozastaven</span>
+                {% endif %}
+            </form>
+
+            <div class="cell help-contextual">
+                <p>SMS jízdenku dostanete <strong>do 2 minut</strong> po zaplacení.</p>
+                <p>Jízdenka je <strong>platná až po doručení</strong>.</p>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

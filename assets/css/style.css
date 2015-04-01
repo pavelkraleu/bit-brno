@@ -1,0 +1,484 @@
+@charset "UTF-8";
+@import url(normalize.css);
+@import url(../icons/bitbrno/style.css);
+/* 
+B⃦itBrno CSS LOL
+http://www.bitbrno.cz
+*/
+/* basics */
+/* line 37, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+html * {
+  box-sizing: border-box; }
+
+/* line 38, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  background: #EEF2EC; }
+
+/* line 40, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.button {
+  font-weight: 700;
+  padding: 3px 10px;
+  text-decoration: none;
+  border: 1px solid #1E8FC6; }
+
+/* line 41, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.button.primary {
+  background: linear-gradient(-180deg, #23A3E3 0%, #1F8FC7 100%);
+  border-color: #288BCA;
+  color: #fff; }
+
+/* line 42, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.button.secondary {
+  border-color: #288BCA;
+  color: #288BCA; }
+
+/* line 43, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.button.tertiary {
+  border-color: #C8C7CC;
+  color: #288BCA; }
+
+/* line 44, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.button.tertiary.warning {
+  color: #EA9639; }
+
+/* line 45, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.button.tertiary.crucial {
+  color: #E74C3C; }
+
+/* line 47, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.button.full {
+  height: 55px;
+  display: block;
+  position: relative;
+  width: 100%;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 15px; }
+
+/* typo */
+/* line 52, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+h1, h2.loud {
+  font-size: 21px;
+  line-height: 25px;
+  font-weight: 400;
+  margin: 11px 0; }
+
+/* line 53, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+h2.loud {
+  margin: 22px 0 0;
+  color: #000; }
+
+/* line 54, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+h2.loud.crucial {
+  margin: 22px 0;
+  color: #E74C3C; }
+
+/* line 55, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+h2 {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.4);
+  margin: 22px 0 13px; }
+
+/* line 56, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+h2.label {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
+  margin: 24px 0 13px; }
+
+/* line 57, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+p {
+  margin: 11px 0; }
+
+/* line 59, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+a, a:visited {
+  color: #288BCA; }
+
+/* line 60, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+a:hover, a:focus {
+  color: #288BCA; }
+
+/* line 62, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+h1 .icon {
+  color: #5BB126;
+  position: relative;
+  top: 1px; }
+
+/* line 63, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+h2 .icon {
+  position: relative;
+  top: 1px; }
+
+/* boards */
+/* line 68, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.container {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative; }
+
+/* line 69, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.board {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  background: #EEF2EC;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5); }
+
+/* line 70, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.board.active {
+  z-index: 2; }
+
+/* line 71, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.board .footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+
+/* line 73, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.board.frw.go-out {
+  transition: left 0.4s ease-in-out;
+  left: -50%; }
+
+/* line 74, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.board.frw.go-prep {
+  left: 100%;
+  z-index: 3; }
+
+/* line 75, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.board.frw.go-in {
+  transition: left 0.4s ease-in-out;
+  left: 0; }
+
+/* line 77, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.board.bck.go-out {
+  transition: left 0.4s ease-in-out;
+  left: 50%; }
+
+/* line 78, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.board.bck.go-prep {
+  left: -100%;
+  z-index: 3; }
+
+/* line 79, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.board.bck.go-in {
+  transition: left 0.4s ease-in-out;
+  left: 0; }
+
+/* cells */
+/* line 84, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.cell {
+  padding: 0 15px; }
+
+/* line 86, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+header.cell {
+  background: #5BB126;
+  position: relative;
+  height: 41px;
+  margin-bottom: 3px;
+  padding: 9px 15px 0;
+  z-index: 2; }
+
+/* line 87, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+header:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: url(../elements/ticket-border-green.svg) repeat-x; }
+
+/* line 88, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+header .identity {
+  width: 85px;
+  height: 24px;
+  background: url(../bitbrno.svg) no-repeat 0 0;
+  text-indent: -1000000;
+  display: block; }
+
+/* line 90, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.alaticket {
+  padding-bottom: 4px;
+  background: #fff;
+  padding-top: 1px;
+  margin-top: -3px;
+  position: relative; }
+
+/* line 91, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.alaticket:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: url(../elements/ticket-border-grey.svg) 0 0 repeat-x; }
+
+/* line 92, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.alaticket h1 {
+  color: #5BB126;
+  margin: 14px 0 5px; }
+
+/* line 93, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.alaticket h1.calm {
+  color: rgba(0, 0, 0, 0.4); }
+
+/* line 94, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.alaticket p {
+  margin: 5px 0 7px; }
+
+/* line 96, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.ticket {
+  border: 1px solid #C8C7CC;
+  border-width: 1px 0;
+  margin-top: -1px;
+  background: #fff;
+  white-space: nowrap;
+  position: relative; }
+
+/* line 97, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.ticket:after {
+  content: '';
+  display: block;
+  clear: both; }
+
+/* line 98, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.ticket .labels {
+  float: left;
+  margin: 11px 0 11px; }
+
+/* line 99, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.ticket .ticket-name {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 3px; }
+
+/* line 100, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.ticket .ticket-meta .valid {
+  color: #5BB126; }
+
+/* line 101, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.ticket .ticket-meta .waiting {
+  color: #EA9639; }
+
+/* line 102, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.ticket .actions {
+  float: right;
+  margin-top: 18px; }
+
+/* line 103, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.ticket .actions .action {
+  border-radius: 3px;
+  display: inline-block; }
+
+/* line 104, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.alaticket .ticket {
+  border-bottom: 0;
+  margin: 9px -15px -3px 0;
+  border-color: #E0E4E9;
+  padding-right: 15px; }
+
+/* line 106, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.help ol, .help ul {
+  margin: 0;
+  padding: 0 0 11px 35px; }
+
+/* line 107, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.help-contextual {
+  color: rgba(0, 0, 0, 0.4);
+  margin-top: 18px; }
+
+/* line 108, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.help-contextual p {
+  color: rgba(0, 0, 0, 0.4);
+  margin: 0; }
+
+/* line 110, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.collapsible, .collapsible * {
+  -webkit-tap-highlight-color: transparent; }
+
+/* line 111, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.collapsible h2 {
+  color: #288BCA;
+  font-weight: 400;
+  margin: 0 0 7px; }
+
+/* line 112, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.collapsible h2 .icon {
+  font-size: 24px;
+  position: relative;
+  top: 6px; }
+
+/* line 113, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.collapsible.first {
+  margin-top: 22px; }
+
+/* line 114, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.collapsible p.content {
+  margin: 0;
+  padding: 11px 0; }
+
+/* line 116, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.separated {
+  margin: 22px 0;
+  color: rgba(0, 0, 0, 0.4); }
+
+/* line 117, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.separated > *:first-child {
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  padding-top: 11px; }
+
+/* line 119, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+form.phone input {
+  height: 55px;
+  font-size: 18px;
+  border: 1px solid #C8C7CC;
+  border-width: 1px 0 0;
+  width: 100%;
+  padding: 0 15px;
+  font-weight: 300;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
+
+/* line 121, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+button.button.full.paybit {
+  padding-top: 1px; }
+
+/* line 122, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.button.full.paybit:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  left: 15px;
+  top: 11px;
+  background: url(../elements/bitcoin-inv.svg) no-repeat center; }
+
+/* line 123, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.button.full.paybit .icon {
+  font-size: 24px;
+  color: #fff;
+  position: absolute;
+  right: 7px;
+  top: 15px;
+  color: rgba(0, 0, 0, 0.4); }
+
+/* line 125, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.labels p {
+  margin: 2px 0 11px;
+  color: rgba(0, 0, 0, 0.4); }
+
+/* line 127, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.bigticket .help-contextual p {
+  margin-bottom: 8px;
+  text-align: center; }
+
+/* line 128, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.bigticket .alaticket .ticket {
+  border-bottom: 1px solid #E0E4E9;
+  margin-bottom: 0; }
+
+/* line 130, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.bigticket .subcell.labels {
+  margin: 11px 0;
+  text-align: center; }
+
+/* line 131, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.bigticket .subcell.labels .label {
+  color: rgba(0, 0, 0, 0.4); }
+
+/* line 132, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.bigticket .subcell.labels .number {
+  font-weight: 700;
+  margin-bottom: 14px; }
+
+/* line 133, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.bigticket .subcell.labels .code {
+  margin-bottom: 17px; }
+
+/* line 134, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.bigticket .subcell.labels .code em {
+  font-weight: 700;
+  font-style: normal; }
+
+/* line 136, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.dials .dial-labels {
+  text-align: center; }
+
+/* line 137, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.dials .dial-labels .label {
+  margin-top: 40px; }
+
+/* line 138, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.dials .dial-labels .time {
+  font-size: 64px;
+  color: #5BB126;
+  font-weight: 100;
+  line-height: 64px;
+  margin: 5px 0 11px; }
+
+/* line 139, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.dials .dial-labels .from, .dials .dial-labels .to {
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(0, 0, 0, 0.4); }
+
+/* line 141, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.dials {
+  position: relative;
+  width: 220px;
+  margin: 0 auto; }
+
+/* line 142, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.dials .dial {
+  display: block;
+  height: 220px;
+  width: 220px;
+  border-radius: 50%;
+  box-shadow: inset 0px 0px 1px 0px rgba(0, 0, 0, 0.5); }
+
+/* line 143, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+.dials .dial-labels {
+  position: absolute;
+  top: 10;
+  left: 10;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3); }
+
+/* line 145, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+#ticket-waiting .dial {
+  background: linear-gradient(-180deg, #FDB86C 0%, #EA9639 100%); }
+
+/* line 146, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+#ticket-confirmed .dial {
+  background: linear-gradient(-180deg, #70D035 0%, #459215 100%); }
+
+/* line 148, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+#ticket-confirmed .dials .dial-labels .label {
+  font-size: 18px;
+  font-weight: 300;
+  margin-top: 36px; }
+
+/* line 149, /Users/pavelhamrik/Dropbox/Public/bitbrno/assets/css/style.scss */
+#ticket-waiting .dials .dial-labels .time {
+  color: #EA9639; }
+
+/*# sourceMappingURL=style.css.map */
