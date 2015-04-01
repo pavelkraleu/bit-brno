@@ -10,6 +10,6 @@ Authors :
 * Pavel Hamřík
 * Pavel Kral - <pavel@pavelkral.eu>
 * Zdeněk Softić
-* Jan Kolar
-* Ondrej Vesely
+* Jan Kolář
+* Ondřej Veselý
 
