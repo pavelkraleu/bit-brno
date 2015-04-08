@@ -16,6 +16,7 @@ from status_view import Status_view
 
 import settings
 from smssender import SmsSender
+from utils import getHash
 
 
 app = Flask(__name__, static_folder='assets')
@@ -155,26 +156,30 @@ def process_notify(payment_id):
 @app.route("/notification", methods=['GET', 'POST'])
 def process_notification():
     if request.method == 'POST':
-        jason = json.loads(request.data)
-
-        if (jason.has_key("payment_id")):
-            ticket = Ticket.query.filter(Ticket.payment_id == jason["payment_id"]).first()
-            if ticket is not None:
-                ticket.status = jason["status"]
-
-            #tady zavolam neco co bude delat veci, kdyz bude potvrzena platba
-            if jason["status"] == "confirmed":
-                payment_id = jason["payment_id"]
-                process_notify(payment_id)
-                # url = "http://10.0.0.143:5000/notify/"+payment_id
-
-                # not_url = Request(url)
-                # response_body = urlopen(not_url).read()
-
-                # uloz zmenu stavu ticketu
-                db_session.commit()
-
-        return 'ok'
+        # only let it work with post that is valid based on given password
+        if str(request.headers.get('BPSignature')) == getHash(request.data):
+            jason = json.loads(request.data)
+            
+            if (jason.has_key("payment_id")):
+                ticket = Ticket.query.filter(Ticket.payment_id == jason["payment_id"]).first()
+                if ticket is not None:
+                    ticket.status = jason["status"]
+                    
+                #tady zavolam neco co bude delat veci, kdyz bude potvrzena platba
+                if jason["status"] == "confirmed":
+                    payment_id = jason["payment_id"]
+                    process_notify(payment_id)
+                    # url = "http://10.0.0.143:5000/notify/"+payment_id
+                    
+                    # not_url = Request(url)
+                    # response_body = urlopen(not_url).read()
+                    
+                    # uloz zmenu stavu ticketu
+                    db_session.commit()
+                    
+            return 'ok'
+        else:
+            return 'data not validated using password'
 
     status = request.args.get('bitcoinpay-status')
     if status == 'cancel':

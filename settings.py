@@ -13,6 +13,7 @@ DATABASE = {
 
 bitcoinPayOwnerEmail = os.environ.get('BITCOIN_PAY_OWNER_ACCOUNT_EMAIL')
 bitcoinPayAuthToken = os.environ.get('BITCOIN_PAY_AUTH_TOKEN')
+bitcoinPayPassword = os.environ.get('BITCOIN_PAY_PASSWORD')
 
 smssenderAnswerMail = os.environ.get('SMSSENDER_ANSWER_MAIL')
 smssenderServiceUrl = os.environ.get('SMSSENDER_SERVICE_URL')

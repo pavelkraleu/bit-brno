@@ -2,6 +2,8 @@ from datetime import datetime
 import json
 import re
 from urllib2 import urlopen, Request
+import hashlib
+import settings
 
 
 SMS_PATTERN = re.compile(
@@ -53,4 +55,11 @@ def get_mbtc_for(amount, currency='CZK'):
         return round((float(amount) / bitcoina) * 1000, 3)
     except ZeroDivisionError:
         return None
+
+# returns hash from 'string+password'
+def getHash(raw_string):
+    m = hashlib.sha256()
+    m.update(raw_string)
+    m.update(settings.bitcoinPayPassword)
+    return  m.hexdigest()
 
